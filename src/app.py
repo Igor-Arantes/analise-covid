@@ -14,12 +14,12 @@ def main():
     
     st.title("Análise de Óbitos COVID-19")
     
-    st.markdown('Este trabalho analisa os obitos de covid do ano de **2019 e 2020**')
+    st.markdown('Plota os dados de obitos por doenças respiratórias **2019 e 2020**')
     
     
     
-    opcao_doenca = st.selectbox('Selecione o tipo da doença respiratoria:',tipo_doenca)
-    opcao_estado = st.selectbox('Selecione o estado federativo:',tipo_estado)
+    opcao_doenca = st.sidebar.selectbox('Selecione o tipo da doença respiratoria:',tipo_doenca)
+    opcao_estado = st.sidebar.selectbox('Selecione o estado federativo:',tipo_estado)
     
     
     fig = grafico_comparativo(obitos_2019, obitos_2020, opcao_doenca, opcao_estado)
@@ -29,7 +29,7 @@ def main():
     st.text("Dados Brutos")
     
     
-    
+@st.cache
 def carrega_dados(caminho):
     dados = pd.read_csv(caminho)
     return dados     
